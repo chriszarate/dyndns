@@ -2,7 +2,7 @@
 # Dynamic DNS updater for NFSN
 
 # DNS record
-DNS_RECORD=subdomain
+DNS_RECORD=your-subdomain
 
 # Helper script
 SCRIPT_URL=http://example.com/helper_script/

@@ -2,7 +2,7 @@
 # Dynamic DNS updater for Linode API
 
 # DNS record
-DNS_RECORD=subdomain
+DNS_RECORD=your-subdomain
 RECORD_TYPE=A
 
 # Linode API
