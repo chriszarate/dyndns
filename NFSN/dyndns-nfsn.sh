@@ -14,7 +14,7 @@ IP_FILE=/path/to/current_ip.txt
 LOG_FILE=/path/to/dyndns.log
 
 # Get current external IP address
-CURRENT_IP=`wget http://www.slurpware.org/ -q -O -`
+CURRENT_IP=`wget http://ipecho.net/plain -q -O -`
 
 # Get previous external IP adress
 ARCHIVE_IP=0.0.0.0
