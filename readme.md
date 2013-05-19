@@ -10,15 +10,11 @@ You will need:
 * your domain ID
 * your resource (DNS record) ID
 
-[Download the shell script](https://github.com/chriszarate/DynDNS/tree/master/Linode) at Github.
-
 ### NearlyFreeSpeech
 
 NearlyFreeSpeech provides a Perl library that can access the DNS API, but does not distribute the source code. Therefore, this script is in two parts: a shell script that can be run remotely and a helper Perl script that must reside on a NearlyFreeSpeech server. The shell script assumes that the helper Perl script is protected with HTTP Basic authentication.
 
 You will also need a NearlyFreeSpeech API key.
-
-[Download the shell script and helper Perl script](https://github.com/chriszarate/DynDNS/tree/master/NFSN) at Github.
 
 ### License
 
