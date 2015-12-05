@@ -1,29 +1,23 @@
 #!/bin/sh
 # Dynamic DNS updater for NFSN
 
-# DNS record
-DNS_RECORD=your-subdomain
-
 # Helper script
-SCRIPT_URL=http://example.com/helper_script/
-USERNAME=username
-PASSWORD=password
+URL=http://example.com/dyndns-nfsn-helper.php
+PASSPHRASE=passphrase
+FQDN=subdomain.example.com
 
-# Set file location preferences
-IP_FILE=/path/to/current_ip.txt
-LOG_FILE=/path/to/dyndns.log
+# Log file
+LOG=~/log/dyndns-updated.log
+NOUPDATE=~/log/dyndns-noupdate.log
 
-# Get current external IP address
-CURRENT_IP=`wget http://ipecho.net/plain -q -O -`
-
-# Get previous external IP adress
-ARCHIVE_IP=0.0.0.0
-if [ -f $IP_FILE ]; then
-   ARCHIVE_IP=`awk 'NR==1 {print;exit}' ${IP_FILE}`
-fi
+# Get IP addresses
+NOW=`dig +short myip.opendns.com @resolver1.opendns.com`
+LAST=`dig +short $FQDN`
 
 # If IP address has changed, update record
-if [ "$ARCHIVE_IP" != "$CURRENT_IP" ]; then
-  curl -s -u ${USERNAME}:${PASSWORD} -o $LOG_FILE ${SCRIPT_URL}?record=${DNS_RECORD}
-  echo $CURRENT_IP > $IP_FILE
+if [ -n "$NOW" ] && [ -n "$LAST" ] && [ "$LAST" != "$NOW" ]; then
+  curl -s ${URL}?knock=${PASSPHRASE} >> $LOG
+  echo "" >> $LOG
+else
+  touch $NOUPDATE
 fi
